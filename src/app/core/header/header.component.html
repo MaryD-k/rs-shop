@@ -25,7 +25,6 @@
         </li>
         <li class="nav__item">
           <button class="nav__button" (click)="toggleComunicationDropDwon()">Ещё</button>
-
         </li>
       </ul>
       <div class="working-time-block">
@@ -45,8 +44,9 @@
         </ul>
       </div>
     </div>
-    </div>
+  </div>
   <app-navigation-block (isCatalogOpen)="toogleCatalog($event)"></app-navigation-block>
+  <app-category-nav></app-category-nav>
   <app-location-pop-up [isPopUpOpen]="isPopUpOpen" (isPopUpClose)="closePopUp()"></app-location-pop-up>
   <app-catalog *ngIf="isCatalogOpen"></app-catalog>
 </div>

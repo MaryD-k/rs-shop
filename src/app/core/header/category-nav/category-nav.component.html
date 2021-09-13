@@ -1,0 +1,9 @@
+<div class="category-nav">
+  <div class="category-nav__wrap">
+    <ul class="category-nav__list">
+      <li *ngFor="let category of categories" class="category-nav__item">
+        <a href="{{'/'+category.id}}">{{category.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

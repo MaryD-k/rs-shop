@@ -5,9 +5,10 @@ import { LocationPopUpComponent } from './location-pop-up/location-pop-up.compon
 import { NavigationBlockComponent } from './navigation-block/navigation-block.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryNavComponent } from './category-nav/category-nav.component';
 
 @NgModule({
-  declarations: [HeaderComponent, LocationPopUpComponent, NavigationBlockComponent, CatalogComponent],
+  declarations: [HeaderComponent, LocationPopUpComponent, NavigationBlockComponent, CatalogComponent, CategoryNavComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [HeaderComponent],
 })
