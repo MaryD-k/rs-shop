@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorPageComponent } from '@core/components/error-page/error-page.component';
+import { ErrorPageComponent } from '@core/error-page/error-page.component';
 
-const appRoutes: Routes = [
-  { path: '**', component: ErrorPageComponent },
-];
+const appRoutes: Routes = [{ path: '**', component: ErrorPageComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

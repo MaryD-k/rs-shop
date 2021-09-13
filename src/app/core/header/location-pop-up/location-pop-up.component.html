@@ -1,0 +1,27 @@
+<div *ngIf="isPopUpOpen" class="pop-up__shadow">
+  <div class="location-pop-up">
+    <div class="close-pop-up">
+      <div class="close-pop-up-btn" (click)="closePopUp()"></div>
+    </div>
+    <div class="location-pop-up__form">
+      <form class="location-form">
+        <p class="location-form__title">Населенный пункт</p>
+        <p class="location-form__subtitle">Вам будут показаны товары, а также условия доставки для выбранного населенного пункта.</p>
+        <div class="location-form__input-block">
+          <div class="location-form__label"><label>Населенный пункт</label></div>
+          <div class="location-form__input_wrapper">
+            <input
+              class="location-form__input"
+              name="city"
+              placeholder=""
+              type="text"
+            />
+          </div>
+        </div>
+        <button class="location-form__btn" type="submit">
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
