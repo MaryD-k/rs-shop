@@ -1,0 +1,153 @@
+.footer {
+  min-width: 1080px;
+  overflow: hidden;
+  background-color: #f7f8fa;
+}
+
+.footer__inner {
+  padding: 32px 2.2%;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;  
+}
+
+.footer__inner-wrap {
+  max-width: 1090px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.contacts-block {
+  box-sizing: border-box;
+  border-top: 1px solid rgba(213,215,219,0.5);
+  padding-top: 12px;
+  text-align: center;
+}
+
+.contacts-block__item {
+  text-decoration: none;
+  font-family: Arial,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 24px;
+  padding-left: 26px;
+  border: 0;
+  background-repeat: no-repeat;
+  background-position: 0;
+  background-color: initial; 
+}
+
+.contacts-block__inner {
+  margin: 0 auto;
+  max-width: 950px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  white-space: nowrap; 
+}
+
+.a1 {
+  background-image: url("../../../assets/a1.svg");
+}
+
+.life {
+  background-image: url("../../../assets/life.svg");
+}
+
+.home {
+  background-image: url("../../../assets/homePhone.svg");
+}
+
+.viber {
+  background-image: url("../../../assets/viber.svg");
+}
+
+.telegram {
+  background-image: url("../../../assets/telegram.svg");
+}
+
+.email {
+  background-image: url("../../../assets/email.svg");
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+.social-network-block {
+  margin-top: 12px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(213,215,219,0.5);
+  padding-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(23,35,38,0.05);
+  margin: 0 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  transition: all .2s ease-out;  
+}
+
+.vk {
+  &:hover {
+    background-color: #447dbd;
+
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+.facebook {
+  &:hover {
+    background-color: #4469b0;
+
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+.instagram {
+  &:hover {
+    background: linear-gradient(169.11deg,#f9cb76 12.38%,#ea1e59 53.89%,#c02290 70.24%,#5843c7 97.18%);
+  
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+.youtube {
+  &:hover {
+    background-color: #ff2638;
+
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+.ok {
+
+  &:hover {
+    background-color: #fa9019;
+
+    path {
+      fill: #ffffff;
+    }
+  }
+}
