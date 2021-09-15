@@ -1,0 +1,37 @@
+<div class="promo">
+  <div class="carousel__container">
+    <div class="carousel">
+      <div class="carousel__item" *ngFor="let good of promoGoods">
+        <a [href]="good.goodLink">
+          <img [src]="good.imageSrc">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="popular-categorise">
+    <div class="popular-categorise__item">
+      <a class="popular-categorise__link">
+        <div class="popular-category__title">Холодильники</div>
+        <img class="popular-categorise__img" src="../../../../assets/bosch.png">
+      </a>
+    </div>
+    <div class="popular-categorise__item">
+      <a class="popular-categorise__link">
+        <div class="popular-category__title">Синтезаторы</div>
+        <img class="popular-categorise__img" src="../../../../assets/fante.jpeg">
+      </a>
+    </div>
+    <div class="popular-categorise__item">
+      <a class="popular-categorise__link">
+        <div class="popular-category__title">Ноутбуки</div>
+        <img class="popular-categorise__img" src="../../../../assets/laptop.jpeg">
+      </a>
+    </div>
+    <div class="popular-categorise__item">
+      <a class="popular-categorise__link">
+        <div class="popular-category__title">Кресла</div>
+        <img class="popular-categorise__img" src="../../../../assets/tesoro.jpeg">
+      </a>
+    </div>
+  </div>
+</div>

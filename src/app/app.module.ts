@@ -6,7 +6,6 @@ import { HeaderModule } from '@core/header/header.module';
 import { CategoriesHttpService } from 'src/app/services/categories-http.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 
 @NgModule({
