@@ -76,7 +76,7 @@
       </form>
       <ul *ngIf="goods.length > 0 || categories.length > 0" class="search-results-pop-up__list">
         <li class="search-results-pop-up__item_category" *ngFor="let category of categories">
-          <a class="search-results-pop-up__link_category">{{category.name}}</a>
+          <a class="search-results-pop-up__link_category" href="{{'/'+category.id}}">{{category.name}}</a>
         </li>
         <li class="search-results-pop-up__item" *ngFor="let good of goods">
           <a class="search-results-pop-up__link">{{good.name}}</a>

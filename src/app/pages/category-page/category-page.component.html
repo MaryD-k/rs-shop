@@ -1,0 +1,54 @@
+<div *ngIf="category && subcategory" class="category-page">
+  <div class="wrapper category-page__wrapper">
+    <div class="category-path">
+      <ul class="category-path__list">
+        <li class="category-path__item item__first">
+          <a href="/" class="category-path__link" title="На главную">Главная</a>
+        </li>
+        <li class="category-path__item">
+          <a href="/" class="category-path__link">{{ category.name }}</a>
+        </li>
+        <li class="category-path__item">
+          <a href="/" class="category-path__link">{{ subcategory.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <h1 class="category-page__title">{{ subcategory.name }}</h1>
+    <div class="goods-wrap">
+      <div class="top-paging">
+        <span class="paging-nav">
+          <a *ngIf="page > 1" rel="next" name="2" class="paging__link" (click)="prevPage()">*</a>
+          Страница {{page}} 
+          <a rel="next" name="2" class="paging__link" (click)="nextPage()">></a>
+        </span>
+      </div>
+      <div class="goods__page">
+        <div class="product-container" *ngFor="let good of goods">
+          <a href="" class="product-link">
+            <div class="img-container">
+              <img class="product-img" [src]="good.imageUrls[0]">
+            </div>
+            <p class="product-name">{{ good.name }}</p>
+          </a>
+          <div *ngIf="good.availableAmount" class="availability">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path [amount]="good.availableAmount" productAvailability fill-rule="evenodd" clip-rule="evenodd" d="M13 9C13 11.7614 10.7614 14 8 14C5.23858 14 3 11.7614 3 9C3 6.23858 5.23858 4 8 4C10.7614 4 13 6.23858 13 9ZM14 9C14 12.3137 11.3137 15 8 15C4.68629 15 2 12.3137 2 9C2 5.68629 4.68629 3 8 3C11.3137 3 14 5.68629 14 9ZM5.92426 8.07574L7.5 9.65147L10.5757 6.57574L11.4243 7.42426L7.92426 10.9243C7.81174 11.0368 7.65913 11.1 7.5 11.1C7.34087 11.1 7.18826 11.0368 7.07574 10.9243L5.07574 8.92426L5.92426 8.07574Z" fill="#999999"/>
+              </svg>
+            <span [amount]="good.availableAmount" productAvailability>В наличии</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- id: string;
+name: string;
+imageUrls: [
+  string
+];
+rating: number;
+availableAmount: number;
+price: number;
+description: string;
+isInCart: true;
+isFavorite: true; -->

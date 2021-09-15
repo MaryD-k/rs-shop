@@ -46,6 +46,11 @@
   padding-right: 6px;
   list-style-type: none;
 
+  a {
+    text-decoration: none;
+    color: #1a1a1a;
+  }
+
   &:hover {
     border: none;
     color: #d62761;
@@ -93,8 +98,13 @@
   line-height: 20px;
   margin-right: 3%;
 
-  &:hover {
-    color: #d62761;
-    cursor: pointer;
+  a {
+    text-decoration: none;
+    color: #1a1a1a;
+
+    &:hover {
+      color: #d62761;
+      cursor: pointer;
+    }
   }
 }

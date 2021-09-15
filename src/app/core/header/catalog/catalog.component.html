@@ -3,14 +3,22 @@
     <div class="catalog__wrap">
       <div class="categories__left-container">
         <ul class="categories__list">
-          <li class="categories__item" *ngFor="let category of categories" (mouseover)="setSelectedCategory(category)">{{category.name}}</li>
+          <li class="categories__item" *ngFor="let category of categories" (mouseover)="setSelectedCategory(category)">
+            <a href="{{'/'+category.id}}">
+              {{category.name}}
+            </a>
+          </li>
         </ul>
       </div>
       <div *ngIf="selectedCategory" class="categories__right-container">
         <p class="title">{{selectedCategory.name}}</p>
         <div class="categories__list-wrap">
           <ul class="categories__rigth-list">
-            <li class="categories__rigth-item" *ngFor="let subcategory of selectedCategory.subCategories">{{subcategory.name}}</li>
+            <li class="categories__rigth-item" *ngFor="let subcategory of selectedCategory.subCategories">
+              <a href="{{'/'+subcategory.id}}">
+                {{subcategory.name}}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
