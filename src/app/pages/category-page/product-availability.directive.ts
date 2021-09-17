@@ -16,7 +16,7 @@ export class ProductAvailabilityDirective implements OnInit {
     if(this.amount >= 20) {
       goodsColor = "green"
     } else if (this.amount > 5 && this.amount <= 19) {
-      goodsColor = "yellow"
+      goodsColor = "#ffd700"
     } else {
       goodsColor = "red"
     }

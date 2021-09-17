@@ -1,0 +1,144 @@
+.product-container {
+  width: 23%;
+  margin-top: 18px;
+  border-top: 1px solid #e4e4e4;
+  padding: 30px 5px 0;
+
+}
+
+.product-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1;
+  color: #0072BC;
+  outline: none;
+
+  &:hover {
+    color: #EA1653;
+  }
+}
+
+.img-container {
+  height: 150px;
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.product-img {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.product-name {
+  text-align: center;
+  margin: 0 10px;
+}
+
+.availability {
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+
+  span {
+    display: inline-block;
+    color: #999999;
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    padding-left: 4px;
+    font-weight: 600;
+    padding-top: 3px;
+  }
+}
+
+.control-block {
+  width: 152px;
+  margin: 0 auto;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-bottom: 12px;
+  text-align: center;
+
+  span {
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 0.3em;
+  }
+}
+
+.rating-block {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;  
+}
+
+.rating_default {
+  margin-bottom: 16px;
+  text-align: left;
+  margin: 0 0 12px 0;
+  background: url('../../../../assets/rate-empty.svg') repeat-x;
+  width: 75px;
+  height: 15px;
+  display: block;
+}
+
+.product-rating {
+  max-width: 100%; 
+  display: inline-block;
+  height: 15px;
+  text-align: left; 
+  background: url('../../../../assets/rate-filled.svg') repeat-x;
+}
+
+.to-basket-btn {
+  margin: 0 auto;
+  margin-bottom: 12px;
+  width: 100%;
+  display: block;
+  height: 31px;
+  background: #EA1653;
+  line-height: 29px;
+  font-size: 12px;
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+}
+
+.to-favorites-btn {
+  color: #0072BC;
+  // border-bottom: 1px dotted rgba(0, 114, 188, 0.5);
+  cursor: pointer;
+  pointer-events: auto;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+}
+
+.goods__page {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  outline: none;
+  border-spacing: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 25px;
+}
