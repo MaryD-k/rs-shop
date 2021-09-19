@@ -1,0 +1,50 @@
+<div *ngIf="category && subcategory" class="product-page">
+  <div class="wrapper product-page__wrapper">
+    <div class="category-path">
+      <ul class="category-path__list">
+        <li class="category-path__item item__first">
+          <a href="/" class="category-path__link" title="На главную">Главная</a>
+        </li>
+        <li class="category-path__item">
+          <a href="/category" class="category-path__link">{{ category.name }}</a>
+        </li>
+        <li class="category-path__item">
+          <a href="/subcategory" class="category-path__link">{{ subcategory.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <ng-container *ngIf="product">
+      <h1 class="product-page__title">{{ product.name }}</h1>
+      <div class="product-tools">
+        <span class="product-tools__item">
+          <a>
+            <span class="product-tools__title">Добавить в избранное</span>
+          </a>
+        </span>
+      </div>
+      <div class="product-wrapper">
+        <div class="product">
+          <div class="product-photo">
+            <!-- <span class="g-label g-label__superprice"></span>-->
+            <div class="product-photo__wrapper">
+              <div class="product-photo__left-column">
+                <div class="product-photo__fotorama">
+                  <div class="product-photo_little" 
+                    *ngFor="let photoSrc of product.imageUrls; let i = index"
+                    [ngClass]="{photo_little_selected: i === selectedPhotoIndex}"
+                    (click)="switchPhoto(i)">
+                    <img [src]="photoSrc"/>
+                  </div>
+                </div>
+              </div>
+              <div class="product-photo__right-column">
+                <img [src]="product.imageUrls[selectedPhotoIndex]">
+              </div>
+            </div>
+          </div>
+          <div class="buy-info"></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

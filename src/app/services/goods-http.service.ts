@@ -21,4 +21,8 @@ export class GoodsHttpService {
     return this.httpClient.get<Product[]>
       (`http://localhost:3004/goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=${countOfItemsPerPage}`)
   }
+
+  getProductById(id: string) {
+    return this.httpClient.get<Product>(`http://localhost:3004/goods/item/${id}`);
+  }
 }

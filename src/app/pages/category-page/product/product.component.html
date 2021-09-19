@@ -1,6 +1,6 @@
 <div class="goods__page" *ngIf="goods.length > 0">
   <div class="product-container" *ngFor="let good of goods | sortGoods : sorting">
-    <a href="" class="product-link">
+    <a [routerLink]="[good.id]" class="product-link">
       <div class="img-container">
         <img class="product-img" [src]="good.imageUrls[0]">
       </div>
@@ -24,3 +24,4 @@
     </div>
   </div>
 </div>
+<!-- href="{{subcategory.id+'/'+good.id}}" -->

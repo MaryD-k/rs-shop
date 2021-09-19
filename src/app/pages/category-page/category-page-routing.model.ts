@@ -4,7 +4,10 @@ import { CategoryPageComponent } from './category-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: CategoryPageComponent },
-  // { path: ':categoryName', component: CategoryPageComponent },
+  { 
+    path: ':productId', 
+    loadChildren: () => import('../product-page/product-page.module').then(m => m.ProductPageModule)
+  },
 ];
 
 @NgModule({

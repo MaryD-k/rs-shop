@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Sorting } from 'src/app/models/goods-sorting.model';
 import { Product } from 'src/app/models/product.model';
-import { SORT_TYPE } from './constants/sorting-type.constants';
+import { SORT_TYPE } from '../constants/sorting-type.constants';
 
 @Pipe({
   name: 'sortGoods',
