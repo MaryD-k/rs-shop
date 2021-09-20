@@ -41,5 +41,6 @@ export class CheckAuthService {
   logout(): void {
     // this.isLogInSubject.next(false);
     localStorage.removeItem('token');
+    this.userSubject.next(null);
   }
 }
