@@ -29,7 +29,7 @@ export class AccountBlockComponent implements OnInit {
 
   isUserLogIn: boolean;
 
-  currentUser: User;
+  currentUser: User | null;
 
   @Output() isClosePopUp = new EventEmitter<boolean>(false);
 
@@ -45,6 +45,9 @@ export class AccountBlockComponent implements OnInit {
       if(token) {
         this.userToken = token;
         this.userHttpService.getUserInfo(this.userToken).subscribe(user => this.currentUser = user);
+      } else {
+        this.userToken = '';
+        this.currentUser = null;
       }
     })
   }
@@ -71,7 +74,6 @@ export class AccountBlockComponent implements OnInit {
       (token: any) => {
         this.userToken = token.token; 
         this.checkAuthService.login(this.userToken);
-        console.log(this.userToken);
       },
       error => console.log(error) //вывести что такое пользователя нет
     );
@@ -91,7 +93,6 @@ export class AccountBlockComponent implements OnInit {
       (token: any) => {
         this.userToken = token.token; 
         this.checkAuthService.login(this.userToken);
-        console.log(this.userToken);
       },
       error => console.log(error)
     );
@@ -104,6 +105,7 @@ export class AccountBlockComponent implements OnInit {
 
   logout() {
     this.checkAuthService.logout();
+    this.closeAccountBlock();
   }
 
 }
