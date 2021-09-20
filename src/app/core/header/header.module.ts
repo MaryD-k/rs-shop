@@ -6,9 +6,10 @@ import { NavigationBlockComponent } from './navigation-block/navigation-block.co
 import { CatalogComponent } from './catalog/catalog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryNavComponent } from './category-nav/category-nav.component';
+import { AccountBlockComponent } from 'src/app/components/account-block/account-block.component';
 
 @NgModule({
-  declarations: [HeaderComponent, LocationPopUpComponent, NavigationBlockComponent, CatalogComponent, CategoryNavComponent],
+  declarations: [HeaderComponent, LocationPopUpComponent, NavigationBlockComponent, CatalogComponent, CategoryNavComponent, AccountBlockComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [HeaderComponent],
 })

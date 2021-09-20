@@ -4,6 +4,7 @@ import { Category } from "@core/models/category.model";
 import { Subscription } from "rxjs";
 import { debounceTime } from 'rxjs/operators';
 import { CategoriesHttpService } from "src/app/services/categories-http.service";
+import { CheckAuthService } from "src/app/services/check-auth.service";
 import { GoodsHttpService } from "src/app/services/goods-http.service";
 
 const MIN_REQUEST_LENGTH = 2;
@@ -23,12 +24,15 @@ export class NavigationBlockComponent implements OnInit, OnDestroy {
 
   searchRequest = new FormControl('');
 
+  isAccountBlockOpen: boolean;
+
   @Output() isCatalogOpen = new EventEmitter<boolean>(false);
 
   private subscriptions: Subscription = new Subscription();
 
   constructor(private goodsHttpService: GoodsHttpService,
-    private categoryHttpService: CategoriesHttpService) { }
+    private categoryHttpService: CategoriesHttpService,
+    private checkAuthService: CheckAuthService) { }
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -48,6 +52,8 @@ export class NavigationBlockComponent implements OnInit, OnDestroy {
         }
       )
     );
+    this.isAccountBlockOpen = false;
+    this.checkAuthService.checkAuthUser();
   }
 
   ngOnDestroy(): void {
@@ -68,6 +74,14 @@ export class NavigationBlockComponent implements OnInit, OnDestroy {
     this.searchRequest.setValue('');
     this.goods = [];
     this.categories = [];
+  }
+
+  openAccountBlock() {
+    this.isAccountBlockOpen = true;
+  }
+
+  closeAccountBlock() {
+    this.isAccountBlockOpen = false;
   }
 
 }

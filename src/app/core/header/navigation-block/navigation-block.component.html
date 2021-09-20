@@ -84,7 +84,7 @@
       </ul>
     </div>
     <div class="user-account">
-      <button type="button" class="user-account__toogler">
+      <button type="button" class="user-account__toogler" (click)="openAccountBlock()">
         <div class="user-account__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="">
             <path
@@ -99,6 +99,7 @@
         </div>
         <span class="user-account__text">Аккаунт</span>
       </button>
+      <app-account-block (isClosePopUp)="closeAccountBlock()" *ngIf="isAccountBlockOpen"></app-account-block>
     </div>
     <div class="header-basket">
       <a class="header-basket-box" href="/basket">
