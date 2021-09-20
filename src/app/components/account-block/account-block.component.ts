@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';
 import { CheckAuthService } from 'src/app/services/check-auth.service';
 import { UserHttpService } from 'src/app/services/user-http.service';
@@ -21,8 +22,6 @@ export class AccountBlockComponent implements OnInit {
 
   password: string;
 
-  userToken: string;
-
   name: string;
 
   lastName: string;
@@ -35,21 +34,16 @@ export class AccountBlockComponent implements OnInit {
 
   constructor(private router: Router,
     private userHttpService: UserHttpService,
-    private checkAuthService: CheckAuthService) { }
+    private checkAuthService: CheckAuthService,
+    private store: Store) { }
 
   ngOnInit(): void {
     this.isAuthPopUpOpen = false;
     this.isAccountBlockOpen = true;
     this.isRegPopUpOpen = false;
-    this.checkAuthService.userToken$.subscribe(token => {
-      if(token) {
-        this.userToken = token;
-        this.userHttpService.getUserInfo(this.userToken).subscribe(user => this.currentUser = user);
-      } else {
-        this.userToken = '';
-        this.currentUser = null;
-      }
-    })
+    this.store.subscribe((results: any) => {
+      this.currentUser = results.userState.user;
+    });
   }
 
   toBasket() {
@@ -72,11 +66,12 @@ export class AccountBlockComponent implements OnInit {
   loginUser() {
     this.userHttpService.loginUser(this.login, this.password).subscribe(
       (token: any) => {
-        this.userToken = token.token; 
-        this.checkAuthService.login(this.userToken);
+        let userToken = token.token; 
+        this.checkAuthService.login(userToken);
       },
       error => console.log(error) //вывести что такое пользователя нет
     );
+    // this.checkAuthService.logout();
     this.login = '';
     this.password = '';
     this.closeAccountBlock();
@@ -91,10 +86,10 @@ export class AccountBlockComponent implements OnInit {
   registerUser() {
     this.userHttpService.registerUser(this.name, this.lastName, this.login, this.password).subscribe(
       (token: any) => {
-        this.userToken = token.token; 
-        this.checkAuthService.login(this.userToken);
+        let userToken = token.token; 
+        this.checkAuthService.login(userToken);
       },
-      error => console.log(error)
+      error => console.log(error) //вывести что такой пользователь есть
     );
     this.login = '';
     this.password = '';

@@ -8,6 +8,8 @@ import { CategoriesHttpService } from 'src/app/services/categories-http.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './redux/user/user.effects';
 import { userReducer } from './redux/user/user.reducers';
 import { CheckAuthService } from './services/check-auth.service';
 import { UserHttpService } from './services/user-http.service';
@@ -19,7 +21,8 @@ import { UserHttpService } from './services/user-http.service';
     AppRoutingModule, 
     HeaderModule, 
     HttpClientModule,
-    StoreModule.forRoot({user: userReducer})
+    StoreModule.forRoot({userState: userReducer}), 
+    EffectsModule.forRoot([UserEffects])
   ],
   providers: [CategoriesHttpService, UserHttpService, CheckAuthService],
   bootstrap: [AppComponent],

@@ -7,6 +7,10 @@ const appRoutes: Routes = [
     path: '', 
     loadChildren: () => import('./pages/main-page/main-page.module').then(m => m.MainPageModule) 
   },
+  {
+    path: 'basket', 
+    loadChildren: () => import('./pages/basket-page/basket-page.module').then(m => m.BasketPageModule)
+  },
   { path: 'errorpage', component: ErrorPageComponent },
   { 
     path: ':categoryName', 

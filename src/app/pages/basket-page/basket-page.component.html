@@ -1,0 +1,13 @@
+<div class="category-page">
+  <div class="wrapper basket-page__wrapper">
+    <h2 class="category-page__title">Оформление заказа</h2>
+    <ng-container *ngIf="goodsToBuy.length === 0">
+      <p>Ваша корзина пуста</p>
+      <a class="to-main__link" href="/">← Вернуться к покупкам</a>
+    </ng-container>
+    {{goodsToBuy}}
+    <ng-container *ngIf="goodsToBuy.length > 0">
+      <div *ngFor="let product of goodsToBuy">{{product}}</div>
+    </ng-container>
+  </div>
+</div>

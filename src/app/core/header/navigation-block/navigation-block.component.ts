@@ -77,7 +77,11 @@ export class NavigationBlockComponent implements OnInit, OnDestroy {
   }
 
   openAccountBlock() {
-    this.isAccountBlockOpen = true;
+    if(this.isAccountBlockOpen) {
+      this.isAccountBlockOpen = false;
+    } else {
+      this.isAccountBlockOpen = true;
+    }
   }
 
   closeAccountBlock() {
