@@ -49,12 +49,19 @@
   a {
     text-decoration: none;
     color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &:hover {
     border: none;
     color: #d62761;
     background-color: rgba(229,46,107,.1);
+
+    .categories__item_icon {
+      color: #d62761;
+    }
   }
 }
 
@@ -106,5 +113,13 @@
       color: #d62761;
       cursor: pointer;
     }
+  }
+}
+
+.categories__item_icon {
+  margin-right: 3px;
+
+  svg {
+    margin-top: 2px;
   }
 }
