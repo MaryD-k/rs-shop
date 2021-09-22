@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user.model';
 
 export enum LocationActions {
   GetLocation = "Get Location",
+  ChangeLocation = "Change Location",
   LocationGotSuccess = 'Location Got Success',
   LocationGotError = 'Location Got Error',
 }
@@ -13,3 +14,5 @@ export const locationGotSuccess = createAction( LocationActions.LocationGotSucce
   props<{ location: string }>());
 
 export const locationGotError = createAction( LocationActions.LocationGotError );
+
+export const changeLocation = createAction (LocationActions.ChangeLocation, props<{ location: string}>())

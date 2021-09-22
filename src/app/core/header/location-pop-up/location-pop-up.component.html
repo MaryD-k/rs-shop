@@ -10,15 +10,12 @@
         <div class="location-form__input-block">
           <div class="location-form__label"><label>Населенный пункт</label></div>
           <div class="location-form__input_wrapper">
-            <input
-              class="location-form__input"
-              name="city"
-              placeholder=""
-              type="text"
-            />
+            <select [(ngModel)]="selectedCity" name="city" class="location-form__input">
+              <option *ngFor="let city of cities" [value]="city" >{{city}}</option>
+            </select>
           </div>
         </div>
-        <button class="location-form__btn" type="submit">
+        <button class="location-form__btn" type="submit" (click)="selectCity()">
           Сохранить
         </button>
       </form>
