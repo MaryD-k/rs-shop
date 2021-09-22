@@ -67,7 +67,6 @@ export class AccountBlockComponent implements OnInit {
       },
       error => console.log(error) //вывести что такое пользователя нет
     );
-    // this.checkAuthService.logout();
     this.login = '';
     this.password = '';
     this.closeAccountBlock();
@@ -97,6 +96,13 @@ export class AccountBlockComponent implements OnInit {
   logout() {
     this.checkAuthService.logout();
     this.closeAccountBlock();
+  }
+
+  closeAuthorization() {
+    this.isAuthPopUpOpen = false;
+    this.isAccountBlockOpen = false;
+    this.isRegPopUpOpen = false;
+    this.isClosePopUp.next(false);
   }
 
 }
