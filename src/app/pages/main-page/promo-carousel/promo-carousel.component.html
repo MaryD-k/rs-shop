@@ -1,34 +1,52 @@
 <div class="promo">
   <div class="carousel__container">
     <div class="carousel">
-      <div class="carousel__item" *ngFor="let good of promoGoods">
-        <a [href]="good.goodLink">
-          <img [src]="good.imageSrc">
+      <ng-container *ngIf="options">
+        <ng-container *ngTemplateOutlet="carouselSlider; context: { watch: watch$ | async }"></ng-container>
+      </ng-container>
+      <ng-template #carouselSlider>
+        <div class="carousel-slider">
+          <ng-container *ngFor="let slide of options!.slides; let index = index">
+            <ng-container *ngTemplateOutlet="carouselSlide; context: { slide: slide, index: index }"></ng-container>
+          </ng-container>
+          <div class="carousel-indicators">
+            <button
+            type="button"
+            class="carousel-indicator"
+            (click)="changeSlide$.next(index)"
+            *ngFor="let slide of options.slides; let index = index"
+            [class.carousel-indicator_active]="options.active === index"></button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #carouselSlide let-slide="slide" let-index="index">
+        <a class="carousel-slide" [href]="slide.link" [class.carousel-slide_hide]="options.hide === index" [class.carousel-slide_active]="options.active === index">
+          <img class="carousel-slide-image" [src]="slide.src">
         </a>
-      </div>
+      </ng-template>
     </div>
   </div>
   <div class="popular-categorise">
     <div class="popular-categorise__item">
-      <a class="popular-categorise__link">
+      <a class="popular-categorise__link" href="/refrigerators">
         <div class="popular-category__title">Холодильники</div>
         <img class="popular-categorise__img" src="../../../../assets/bosch.png">
       </a>
     </div>
     <div class="popular-categorise__item">
-      <a class="popular-categorise__link">
-        <div class="popular-category__title">Синтезаторы</div>
+      <a class="popular-categorise__link"  href="/music-instruments">
+        <div class="popular-category__title">Хобби</div>
         <img class="popular-categorise__img" src="../../../../assets/fante.jpeg">
       </a>
     </div>
     <div class="popular-categorise__item">
-      <a class="popular-categorise__link">
+      <a class="popular-categorise__link" href="/laptops">
         <div class="popular-category__title">Ноутбуки</div>
         <img class="popular-categorise__img" src="../../../../assets/laptop.jpeg">
       </a>
     </div>
     <div class="popular-categorise__item">
-      <a class="popular-categorise__link">
+      <a class="popular-categorise__link" href="/armchairs">
         <div class="popular-category__title">Кресла</div>
         <img class="popular-categorise__img" src="../../../../assets/tesoro.jpeg">
       </a>
