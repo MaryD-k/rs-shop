@@ -78,8 +78,11 @@
         <li class="search-results-pop-up__item_category" *ngFor="let category of categories">
           <a class="search-results-pop-up__link_category" href="{{'/'+category.id}}">{{category.name}}</a>
         </li>
+        <li class="search-results-pop-up__item_category" *ngFor="let subcategory of subcategories">
+          <a class="search-results-pop-up__link_category" href="{{'/'+subcategory.id}}">{{subcategory.name}}</a>
+        </li>
         <li class="search-results-pop-up__item" *ngFor="let good of goods">
-          <a class="search-results-pop-up__link">{{good.name}}</a>
+          <a class="search-results-pop-up__link" href="{{'/'+good.subCategory+'/'+good.id}}">{{good.name}}</a>
         </li>
       </ul>
     </div>

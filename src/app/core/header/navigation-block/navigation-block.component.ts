@@ -22,6 +22,8 @@ export class NavigationBlockComponent implements OnInit, OnDestroy {
 
   categories: Category[] = [];
 
+  subcategories: {name: string, id: string}[] = [];
+
   searchRequest = new FormControl('');
 
   isAccountBlockOpen: boolean;
@@ -39,8 +41,14 @@ export class NavigationBlockComponent implements OnInit, OnDestroy {
       this.searchRequest.valueChanges.pipe(debounceTime(1000)).subscribe((value: string) =>
         {
           if (value.length > MIN_REQUEST_LENGTH) {
-            this.categoryHttpService.getCategories().subscribe(categories => 
-              this.categories = categories.filter(category => category.name.includes(value))
+            this.categoryHttpService.getCategories().subscribe(categories => {
+              this.categories = categories.filter(category => category.name.toLowerCase().includes(value.toLowerCase()));
+              let allSubcategories: {name: string, id: string}[] = [];
+              categories.forEach(category => {
+                allSubcategories = allSubcategories.concat(category.subCategories);
+              });
+              this.subcategories = allSubcategories.filter(subcategory => subcategory.name.toLowerCase().includes(value.toLowerCase()));
+            }
             );
             this.goodsHttpService.getGoods(value).subscribe(goods => 
               this.goods = goods
