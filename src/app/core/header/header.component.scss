@@ -172,10 +172,37 @@ $header-text-color: #1a1a1a;
   height: 30px;
   transition: .2s ease;
   padding: 3px 16px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(219,33,95,0.08);
+    color: #d62761;
+
+    .item_telegram {
+      color: #d62761;
+    }
+  }
 }
 
 .communication-drop-down__list {
   list-style: none;
   font-size: 14px;
   line-height: 20px;
+}
+
+.item__svg {
+  padding-top: 4px;
+  margin-right: 4px;
+
+  &:hover {
+    fill: #d62761;
+  }
+}
+
+.item_telegram {
+  color: #39a9e0;
+
+  svg {
+    fill: #ffffff;
+  }
 }
