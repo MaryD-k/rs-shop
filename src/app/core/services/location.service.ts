@@ -1,54 +1,22 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map, switchMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class LocationService {
 
-  // user$: Observable<AuthUser | null>;
+  constructor(private httpClient: HttpClient) {}
 
-  // private userSubject = new BehaviorSubject<AuthUser | null>(null);
-
-  // isLogIn$: Observable<boolean>;
-
-  // private isLogInSubject = new BehaviorSubject<boolean>(false);
-
-  // constructor() {
-  //   this.isLogIn$ = this.isLogInSubject.asObservable();
-  //   this.user$ = this.userSubject.asObservable();
-  // }
-
-  geoFindMe() {
-
-    // const status = document.querySelector('#status');
-  
-    // function success(position: any) {
-    //   const latitude  = position.coords.latitude;
-    //   const longitude = position.coords.longitude;
-  
-    //   status.textContent = '';
-    //   mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-    //   mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-    // }
-  
-    // function error() {
-    //   console.log('Unable to retrieve your location');
-    // }
-  
-    // if(!navigator.geolocation) {
-    //   console.log('error')
-    // } else {
-    //   navigator.geolocation.getCurrentPosition(success, error);
-    // }
-
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        console.log(position)
-      },
-      function(error) {
-        console.log('error')
-      }
+  getLocation() {
+    return this.httpClient.get("https://ipinfo.io?token=e6d305931ebd18").pipe(
+      switchMap((result: any) => {
+        let loc = result.loc.split(',');
+        let coord = encodeURIComponent(loc[0] + ',' + loc[1]);
+        return this.httpClient.get(`https://api.opencagedata.com/geocode/v1/json?q=${coord}&key=44e89b3be2014041b47a76b9e1c7b869`)
+      })
     )
-  
   }
 }

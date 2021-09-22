@@ -14,6 +14,8 @@ import { userReducer } from './redux/user/user.reducers';
 import { CheckAuthService } from './services/check-auth.service';
 import { UserHttpService } from './services/user-http.service';
 import { CartHttpService } from './services/cart-http.service';
+import { locationReducer } from './redux/location/location.reducer';
+import { LocationEffects } from './redux/location/location.effects';
 
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent, FooterComponent],
@@ -22,8 +24,8 @@ import { CartHttpService } from './services/cart-http.service';
     AppRoutingModule, 
     HeaderModule, 
     HttpClientModule,
-    StoreModule.forRoot({userState: userReducer}), 
-    EffectsModule.forRoot([UserEffects])
+    StoreModule.forRoot({userState: userReducer, locationState: locationReducer}), 
+    EffectsModule.forRoot([UserEffects, LocationEffects])
   ],
   providers: [CategoriesHttpService, UserHttpService, CheckAuthService, CartHttpService],
   bootstrap: [AppComponent],

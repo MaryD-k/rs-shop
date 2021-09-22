@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { getLocation } from 'src/app/redux/location/location.actions';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,8 @@ import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } fro
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  location: string;
   
   isPopUpOpen: boolean;
 
@@ -13,9 +17,14 @@ export class HeaderComponent implements OnInit {
 
   isCatalogOpen: boolean;
 
+  constructor(private store: Store) {
+    this.store.subscribe((result: any) => this.location = result.locationState.location);
+  }
+
   ngOnInit(): void {
     this.isPopUpOpen = false;
     this.isComunDropDownOpen = false;
+    this.store.dispatch(getLocation());
   }
 
   openLocationPopUp() {
