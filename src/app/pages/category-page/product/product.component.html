@@ -19,9 +19,8 @@
           <span class="product-rating" [rating]="good.rating" productRating></span>
         </span>
       </div>
-      <div class="to-basket-btn">В корзину</div>
+      <div class="to-basket-btn" (click)="addToBasket(good.id)">В корзину</div>
       <p class="to-favorites-btn">Добавить в избранное</p>
     </div>
   </div>
 </div>
-<!-- href="{{subcategory.id+'/'+good.id}}" -->

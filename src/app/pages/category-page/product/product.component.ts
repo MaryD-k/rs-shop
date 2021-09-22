@@ -1,7 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Category } from '@core/models/category.model';
+import { Store } from '@ngrx/store';
 import { Sorting } from 'src/app/models/goods-sorting.model';
 import { Product } from 'src/app/models/product.model';
+import { CartHttpService } from 'src/app/services/cart-http.service';
 import { GoodsHttpService } from 'src/app/services/goods-http.service';
 import { GoodsSettingsService } from 'src/app/services/goods-sorting.service';
 
@@ -27,7 +29,9 @@ export class ProductComponent implements OnInit, OnChanges {
 
   constructor(
     private goodsSettingsService: GoodsSettingsService,
-    private goodsHttpService: GoodsHttpService) { 
+    private goodsHttpService: GoodsHttpService,
+    private cartHttpService: CartHttpService, 
+    private store: Store) { 
     this.goodsSettingsService.currentSort$.subscribe((sorting) => {
         this.sorting = sorting;
       });
@@ -48,5 +52,14 @@ export class ProductComponent implements OnInit, OnChanges {
       this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id)
       .subscribe( goods => this.goods = goods);
     }
+  }
+
+  addToBasket(itemId: string) {
+    let currentUserToken = localStorage.getItem('token');
+    this.cartHttpService.addItemToCart(itemId, currentUserToken!).subscribe(() => {},
+      error => {
+        this.cartHttpService.addItemToLocalStorage(itemId);
+      }
+    );
   }
 }

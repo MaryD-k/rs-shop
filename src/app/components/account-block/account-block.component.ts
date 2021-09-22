@@ -46,10 +46,6 @@ export class AccountBlockComponent implements OnInit {
     });
   }
 
-  toBasket() {
-    this.router.navigate(['/basket']);
-  }
-
   toChosen() {
     this.router.navigate(['/chosen']);
   }

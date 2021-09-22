@@ -8,4 +8,6 @@ export interface Product {
   description: string;
   isInCart: true;
   isFavorite: true;
+  category: string,
+  subCategory: string
 }

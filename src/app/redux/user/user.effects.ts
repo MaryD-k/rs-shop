@@ -17,10 +17,11 @@ export class UserEffects {
   this.actions$.pipe(
     ofType(UserActions.GetUser),
     switchMap((action: {token: string}) => this.userHttpService.getUserInfo(action.token)),
-    map((userInfo: User) =>
-      userGotSuccess({
+    map((userInfo: User) =>{
+      return userGotSuccess({
         user: userInfo,
       })
+    }
     ),
     catchError(() => of(userGotError()))
   )

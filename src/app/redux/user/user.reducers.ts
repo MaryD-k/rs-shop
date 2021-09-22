@@ -12,9 +12,11 @@ export const initialUserState: UserState = {
 
 const reducer = createReducer(
   initialUserState,
-  on(userGotSuccess, (state, {user}) => ({...state, user: user})),
+  on(userGotSuccess, (state, {user}) => {
+    return {...state, user: Object.assign({}, user)}
+  }),
   on(userGotError, (state) => ({...state, user: null})),
-  on(deleteUser, (state) => ({...state, user: null}))
+  on(deleteUser, (state) => ({...state, user: null})),
 );
 
 export function userReducer(state: UserState | undefined, action: Action) {
