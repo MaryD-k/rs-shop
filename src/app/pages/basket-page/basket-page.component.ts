@@ -28,22 +28,24 @@ export class BasketPageComponent implements OnInit, OnDestroy {
       this.goodsId = [];
       this.goodsToBuy = [];
       if(request.userState.user) {
+        
         let goodsFromLS: string[] = this.cartHttpService.getItemsFromLS();
         if(goodsFromLS.length) {
           let currentUserToken = localStorage.getItem('token');
           goodsFromLS.forEach(product => this.cartHttpService.addItemToCart(product, currentUserToken!).subscribe(() => {}));
           localStorage.removeItem('cart');
           this.store.dispatch(getUser({token: currentUserToken!}));
+        } else {
+          this.goodsId = request.userState.user.cart;
+          this.goodsId.forEach((productId: string) => {
+            this.goodsHttpService.getProductById(productId).subscribe(product => {
+              this.goodsToBuy.push(product);
+            })
+          });
         }
-        this.goodsId = [...request.userState.user.cart];
-        this.goodsId.forEach((productId: string) => {
-          this.goodsHttpService.getProductById(productId).subscribe(product => {
-            this.goodsToBuy.push(product);
-          })
-        });
       } else {
         let goodsFromLS = this.cartHttpService.getItemsFromLS();
-        this.goodsId = [...this.goodsId, ...goodsFromLS];
+        this.goodsId = goodsFromLS;
         this.goodsId.forEach((productId: string) => {
           this.goodsHttpService.getProductById(productId).subscribe(product => {
             this.goodsToBuy.push(product);
@@ -55,6 +57,7 @@ export class BasketPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._subscriptions.unsubscribe();
+    this.goodsToBuy = [];
   }
 
   deleteProduct(id: string) {
@@ -63,7 +66,6 @@ export class BasketPageComponent implements OnInit, OnDestroy {
       this.cartHttpService.deleteProduct(id, currentUserToken).subscribe(() => {});
       this.store.dispatch(getUser({token: currentUserToken}));
     } else {
-      console.log('here')
       let currentCartInLS: string[] = this.cartHttpService.getItemsFromLS();
       let itemIndexForDel = currentCartInLS.indexOf(id);
       if (itemIndexForDel > -1) {
@@ -79,7 +81,4 @@ export class BasketPageComponent implements OnInit, OnDestroy {
       }
     }
   }
-
-  
-
 }
