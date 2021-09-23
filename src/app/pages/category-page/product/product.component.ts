@@ -25,6 +25,8 @@ export class ProductComponent implements OnInit, OnChanges {
   
   @Input() page: number;
 
+  @Input() isAddGoods: boolean;
+
   sorting: Sorting;
 
   constructor(
@@ -45,13 +47,27 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   getGoods() {
-    if(this.page !== 1 ) {
-      this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id, (this.page - 1) * 10)
-      .subscribe( goods => this.goods = goods);
-    } else {
-      this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id)
-      .subscribe( goods => this.goods = goods);
-    }
+    if(this.subcategory) {
+      if(this.isAddGoods) {
+        this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id, 0, this.page * 10)
+        .subscribe( goods => this.goods = goods);
+      } else if(this.page !== 1 ) {
+        this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id, (this.page - 1) * 10)
+        .subscribe( goods => this.goods = goods);
+      } else {
+        this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id)
+        .subscribe( goods => this.goods = goods);
+      }
+    } else if(this.isAddGoods) {
+      this.goodsHttpService.getGoodsForCategory(this.category.id, 0, this.page * 10)
+        .subscribe( goods => this.goods = goods);
+      } else if(this.page !== 1 ) {
+        this.goodsHttpService.getGoodsForCategory(this.category.id, (this.page - 1) * 10)
+          .subscribe( goods => this.goods = goods);
+      } else {
+        this.goodsHttpService.getGoodsForCategory(this.category.id)
+        .subscribe( goods => this.goods = goods);
+      }
   }
 
   addToBasket(itemId: string) {

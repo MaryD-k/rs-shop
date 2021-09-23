@@ -22,6 +22,15 @@ export class GoodsHttpService {
       (`http://localhost:3004/goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=${countOfItemsPerPage}`)
   }
 
+  getGoodsForCategory(categoryId: string, 
+    startPosition: number = 0, 
+    countOfItemsPerPage: number = 10, 
+    sort: string = 'itemField', 
+    reverse: boolean = false) {
+    return this.httpClient.get<Product[]>
+      (`http://localhost:3004/goods/category/${categoryId}?start=${startPosition}&count=${countOfItemsPerPage}&sortBy=${sort}&reverse=${reverse}`)
+  }
+
   getProductById(id: string) {
     return this.httpClient.get<Product>(`http://localhost:3004/goods/item/${id}`);
   }

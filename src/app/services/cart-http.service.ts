@@ -32,10 +32,6 @@ export class CartHttpService {
     } else return [];
   }
 
-  // getGoodsFromCart() {
-
-  // }
-
   addItemToCart(id: string, currentUserToken: string) {
     console.log(id)
     let headers = new HttpHeaders().set('Authorization', `Bearer ${currentUserToken}`);

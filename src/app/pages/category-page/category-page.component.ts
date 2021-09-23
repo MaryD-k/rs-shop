@@ -22,6 +22,8 @@ export class CategoryPageComponent implements OnInit {
 
   page: number;
 
+  isAddGoods: boolean;
+
   private subscription: Subscription;
   constructor(private activateRoute: ActivatedRoute, 
     private categoriesHttpService: CategoriesHttpService,
@@ -32,30 +34,38 @@ export class CategoryPageComponent implements OnInit {
   ngOnInit(): void {
     this.categoriesHttpService.getCategories().subscribe(categories => {
       let categoryCheck;
-      for(let i = 0; i < categories.length; i++) {
-        categoryCheck = categories[i].subCategories.find(subcategory => subcategory.id == this.categoryName);
-        if(categoryCheck) {
-          this.category = categories[i];
-          this.subcategory = categoryCheck;
-          
-          break;
+      if(categories.find(category => category.id === this.categoryName)) {
+        this.category = categories.find(category => category.id === this.categoryName)!;
+      } else {
+        for(let i = 0; i < categories.length; i++) {
+          categoryCheck = categories[i].subCategories.find(subcategory => subcategory.id == this.categoryName);
+          if(categoryCheck) {
+            this.category = categories[i];
+            this.subcategory = categoryCheck;
+            break;
+          }
         }
-      }
-      if(!categoryCheck) {
-        this.router.navigate(['errorpage']);
       }
     });
     this.page = 1;
+    this.isAddGoods = false;
   }
 
   nextPage() {
+    this.isAddGoods = false;
     this.page += 1;
   }
   
   prevPage() {
+    this.isAddGoods = false;
     if(this.page > 0) {
       this.page -= 1;
     }
+  }
+
+  addPage() {
+    this.page += 1;
+    this.isAddGoods = true;
   }
 
 }
