@@ -20,8 +20,9 @@
           <span class="product-rating" [rating]="good.rating" productRating></span>
         </span>
       </div>
-      <div class="to-basket-btn" (click)="addToBasket(good.id)">В корзину</div>
-      <p class="to-favorites-btn">Добавить в избранное</p>
+      <div [class.to-basket-btn]="!good.isInCart" [class.to-basket-btn_true]="good.isInCart" (click)="addToBasket(good)">В корзину</div>
+      <p *ngIf="!good.isFavorite" class="to-favorites-btn">Добавить в избранное</p>
+      <p *ngIf="good.isFavorite" class="to-favorites-btn to-favorites-btn_true">В избранном</p>
     </div>
   </div>
 </div>

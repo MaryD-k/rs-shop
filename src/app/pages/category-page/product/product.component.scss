@@ -124,7 +124,6 @@
 
 .to-favorites-btn {
   color: #0072BC;
-  // border-bottom: 1px dotted rgba(0, 114, 188, 0.5);
   cursor: pointer;
   pointer-events: auto;
   font-size: 11px;
@@ -142,4 +141,27 @@
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 25px;
+}
+
+.to-basket-btn_true {
+  margin: 0 auto;
+  margin-bottom: 8px;
+  width: 100%;
+  display: block;
+  height: 31px;
+  line-height: 29px;
+  font-size: 12px;
+  font-family: Tahoma, Geneva, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  background: #ffffff;
+  color: #EA1653;
+  border: 2px solid #EA1653;
+}
+
+.to-favorites-btn_true {
+  color: #EA1653;
 }

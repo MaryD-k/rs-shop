@@ -33,7 +33,6 @@ export class CartHttpService {
   }
 
   addItemToCart(id: string, currentUserToken: string) {
-    console.log(id)
     let headers = new HttpHeaders().set('Authorization', `Bearer ${currentUserToken}`);
     return this.httpClient.post("/users/cart",  {id}, { headers: headers });
   }
