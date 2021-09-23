@@ -21,6 +21,8 @@
     "@angular/router": "~12.1.0",
     "@ngrx/effects": "^12.4.0",
     "@ngrx/store": "^12.4.0",
+    "angular-http-server": "^1.10.0",
+    "npx": "^10.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
