@@ -25,7 +25,6 @@
       <div class="product-wrapper">
         <div class="product">
           <div class="product-photo">
-            <!-- <span class="g-label g-label__superprice"></span>-->
             <div class="product-photo__wrapper">
               <div class="product-photo__left-column">
                 <div class="product-photo__fotorama">
@@ -42,9 +41,21 @@
               </div>
             </div>
           </div>
-          <div class="buy-info"></div>
+        </div>
+        <div class="info-block">
+          <div class="info-block__top">
+            <div class="price-block">{{product.price}}<span>р.</span></div>
+            <div *ngIf="!product.isInCart" class="to-basket-btn" (click)="addToBasket(product)">В корзину</div>
+            <div *ngIf="product.isInCart" class="to-basket-btn_true">В корзинe</div>
+          </div>
+          <div *ngIf="product.availableAmount" class="exist-block">В наличии</div>
+          <div *ngIf="!product.availableAmount" class="exist-block_none">Нет в наличии</div>
         </div>
       </div>
+      <div class="description-block">
+        <h5 class="description-block__title">Описание товара</h5>
+        <p>{{product.description}}</p>
+        </div>
     </ng-container>
   </div>
 </div>

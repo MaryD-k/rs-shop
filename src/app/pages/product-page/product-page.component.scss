@@ -76,16 +76,17 @@
 }
 
 .product-wrapper {
-  margin-top: 24px;
+  margin-top: 50px;
   width: 100%;
+  display: flex;
 }
 
 .product {
-  width: 100%;
+  width: 70%;
 }
 
 .product-photo {
-  width: 60%;
+  width: 100%;
 }
 
 .buy-info {
@@ -96,6 +97,8 @@
   overflow: hidden;
   position: relative;
   z-index: 1;
+  display: flex;
+  margin-bottom: 32px;
 }
 
 .product-photo__left-column {
@@ -140,5 +143,98 @@
 }
 
 .product-photo__right-column {
+  width: 600px;
+  display: flex;
+  height: 470px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: .5px solid grey;
+  margin-left: 20px;
 
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+}
+
+.info-block {
+  width: 40%;
+}
+
+.to-basket-btn_true {
+  margin: 0 auto;
+  margin-bottom: 8px;
+  width: 150px;
+  display: block;
+  height: 31px;
+  line-height: 29px;
+  font-size: 12px;
+  font-family: Tahoma, Geneva, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  background: #ffffff;
+  color: #EA1653;
+  border: 2px solid #EA1653;
+}
+
+.to-basket-btn {
+  margin: 0 auto;
+  margin-bottom: 12px;
+  width: 150px;
+  display: block;
+  height: 31px;
+  background: #EA1653;
+  line-height: 29px;
+  font-size: 12px;
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+}
+
+.price-block {
+  font-size: 30px;
+  line-height: 39px;
+  display: inline-block;
+  color: #000000;
+}
+
+.info-block__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exist-block {
+  padding-left: 24px;
+  background: url("../../../assets//i-item.png") no-repeat 0 0;
+  line-height: 20px !important;
+  display: block;
+  color: #AA90A5;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.description-block {
+  max-width: 70%;
+  margin-bottom: 30px;
+  border-top: 1px solid #BC1F6E;
+  padding-right: 20%;
+  line-height: 15px;
+  font-size: 14px;
+  padding-top: 32px;
+}
+
+.description-block__title {
+  padding: 0 0 18px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
 }
