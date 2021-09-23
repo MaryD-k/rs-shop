@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorPageComponent } from '@core/error-page/error-page.component';
@@ -16,6 +16,7 @@ import { UserHttpService } from './services/user-http.service';
 import { CartHttpService } from './services/cart-http.service';
 import { locationReducer } from './redux/location/location.reducer';
 import { LocationEffects } from './redux/location/location.effects';
+import { Interceptor } from './api.interceptor';
 
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent, FooterComponent],
@@ -27,7 +28,16 @@ import { LocationEffects } from './redux/location/location.effects';
     StoreModule.forRoot({userState: userReducer, locationState: locationReducer}), 
     EffectsModule.forRoot([UserEffects, LocationEffects])
   ],
-  providers: [CategoriesHttpService, UserHttpService, CheckAuthService, CartHttpService],
+  providers: [
+    CategoriesHttpService, 
+    UserHttpService, 
+    CheckAuthService, 
+    CartHttpService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

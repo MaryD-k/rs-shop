@@ -14,6 +14,6 @@ export class CategoriesHttpService {
   }
 
   getCategories() {
-    return this.httpClient.get<Category[]>('http://localhost:3004/categories');
+    return this.httpClient.get<Category[]>('/categories');
   }
 }

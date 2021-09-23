@@ -14,12 +14,12 @@ export class GoodsHttpService {
   }
 
   getGoods(request: string) {
-    return this.httpClient.get(`http://localhost:3004/goods/search?text=${request}`)
+    return this.httpClient.get(`/goods/search?text=${request}`)
   }
 
   getGoodsForSubcategory(categoryId: string, subCategoryId: string, startPosition: number = 0, countOfItemsPerPage: number = 10) {
     return this.httpClient.get<Product[]>
-      (`http://localhost:3004/goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=${countOfItemsPerPage}`)
+      (`/goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=${countOfItemsPerPage}`)
   }
 
   getGoodsForCategory(categoryId: string, 
@@ -28,10 +28,10 @@ export class GoodsHttpService {
     sort: string = 'itemField', 
     reverse: boolean = false) {
     return this.httpClient.get<Product[]>
-      (`http://localhost:3004/goods/category/${categoryId}?start=${startPosition}&count=${countOfItemsPerPage}&sortBy=${sort}&reverse=${reverse}`)
+      (`/goods/category/${categoryId}?start=${startPosition}&count=${countOfItemsPerPage}&sortBy=${sort}&reverse=${reverse}`)
   }
 
   getProductById(id: string) {
-    return this.httpClient.get<Product>(`http://localhost:3004/goods/item/${id}`);
+    return this.httpClient.get<Product>(`/goods/item/${id}`);
   }
 }

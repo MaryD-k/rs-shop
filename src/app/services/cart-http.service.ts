@@ -35,11 +35,11 @@ export class CartHttpService {
   addItemToCart(id: string, currentUserToken: string) {
     console.log(id)
     let headers = new HttpHeaders().set('Authorization', `Bearer ${currentUserToken}`);
-    return this.httpClient.post("http://localhost:3004/users/cart",  {id}, { headers: headers });
+    return this.httpClient.post("/users/cart",  {id}, { headers: headers });
   }
 
   deleteProduct(id: string, currentUserToken: string) {
     let headers = new HttpHeaders().set('Authorization', `Bearer ${currentUserToken}`);
-    return this.httpClient.delete(`http://localhost:3004/users/cart?id=${id}`, { headers: headers })
+    return this.httpClient.delete(`/users/cart?id=${id}`, { headers: headers })
   }
 }

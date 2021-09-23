@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models/user.model';
 import { deleteUser, getUser } from '../redux/user/user.actions';
 
 @Injectable({
