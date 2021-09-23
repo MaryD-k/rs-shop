@@ -24,7 +24,7 @@ export class PromoCarouselComponent {
   startconfig() {
     this.options = { ...OPTIONS_DEFAULT };
     this.watch$ = this.changeSlide$.pipe(
-      startWith(-1),
+      startWith(0),
       switchMap(index => {
         if (index >= 0) {
           this.options!.hide = this.options!.active;

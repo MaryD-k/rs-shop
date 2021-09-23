@@ -31,7 +31,7 @@ const PROMO_GOODS: CarouselImage[] = [
 
 export const OPTIONS_DEFAULT: PromoCarouselOptions = {
   slides: PROMO_GOODS,
-  active: 0,
+  active: 3,
   hide: null,
-  interval: 4500
+  interval: 4000
 };

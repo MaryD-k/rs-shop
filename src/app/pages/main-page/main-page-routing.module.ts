@@ -4,7 +4,6 @@ import { MainPageComponent } from './main-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
-  // { path: 'item/:id', component: DetailsPageComponent },
 ];
 
 @NgModule({

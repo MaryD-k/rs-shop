@@ -1,5 +1,5 @@
 <div class="goods__page" *ngIf="goods.length > 0">
-  <div class="product-container" *ngFor="let good of goods | sortGoods : sorting">
+  <div class="product-container" *ngFor="let good of goods">
     <a class="product-link" (click)="openProduct(good.id)">
       <div class="img-container">
         <img *ngIf="good.imageUrls[0]" class="product-img" [src]="good.imageUrls[0]">

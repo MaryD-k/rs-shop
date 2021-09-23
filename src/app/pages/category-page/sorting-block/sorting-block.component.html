@@ -3,7 +3,7 @@
     <li class="sorting__item_title"><b>Сортировать по:</b></li>
     <li class="sorting__item" 
         [ngClass]="{sorting__item_selected: sortType === 'popularity'}" 
-        (click)="toogleSort('popularity')">популярности</li>
+        (click)="toogleSort('rating')">популярности</li>
     <li class="sorting__item" 
         [ngClass]="{sorting__item_selected: sortType === 'price'}" 
         (click)="toogleSort('price')">цене</li>

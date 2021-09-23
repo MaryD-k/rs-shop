@@ -17,9 +17,14 @@ export class GoodsHttpService {
     return this.httpClient.get(`/goods/search?text=${request}`)
   }
 
-  getGoodsForSubcategory(categoryId: string, subCategoryId: string, startPosition: number = 0, countOfItemsPerPage: number = 10) {
+  getGoodsForSubcategory(categoryId: string, 
+    subCategoryId: string, 
+    startPosition: number = 0, 
+    countOfItemsPerPage: number = 10, 
+    sort: string = 'itemField', 
+    reverse: boolean = false) {
     return this.httpClient.get<Product[]>
-      (`/goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=${countOfItemsPerPage}`)
+      (`/goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=${countOfItemsPerPage}&sortBy=${sort}&reverse=${reverse}`)
   }
 
   getGoodsForCategory(categoryId: string, 
