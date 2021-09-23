@@ -5,8 +5,6 @@ import { BasketPageRoutingModule } from './basket-page-routing.module';
 
 @NgModule({
   declarations: [BasketPageComponent],
-  imports: [
-    CommonModule, BasketPageRoutingModule
-  ]
+  imports: [CommonModule, BasketPageRoutingModule],
 })
-export class BasketPageModule { }
+export class BasketPageModule {}

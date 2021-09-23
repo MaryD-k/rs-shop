@@ -1,22 +1,20 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map, switchMap } from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocationService {
-
   constructor(private httpClient: HttpClient) {}
 
   getLocation() {
-    return this.httpClient.get("https://ipinfo.io?token=e6d305931ebd18").pipe(
+    return this.httpClient.get('https://ipinfo.io?token=e6d305931ebd18').pipe(
       switchMap((result: any) => {
-        let loc = result.loc.split(',');
-        let coord = encodeURIComponent(loc[0] + ',' + loc[1]);
-        return this.httpClient.get(`https://api.opencagedata.com/geocode/v1/json?q=${coord}&key=44e89b3be2014041b47a76b9e1c7b869`)
+        const loc = result.loc.split(',');
+        const coord = encodeURIComponent(`${loc[0]},${loc[1]}`);
+        return this.httpClient.get(`https://api.opencagedata.com/geocode/v1/json?q=${coord}&key=44e89b3be2014041b47a76b9e1c7b869`);
       })
-    )
+    );
   }
 }

@@ -4,7 +4,6 @@ import { Category } from '@core/models/category.model';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
-import { getUser } from 'src/app/redux/user/user.actions';
 import { CartHttpService } from 'src/app/services/cart-http.service';
 import { CategoriesHttpService } from 'src/app/services/categories-http.service';
 import { GoodsHttpService } from 'src/app/services/goods-http.service';
@@ -12,13 +11,12 @@ import { GoodsHttpService } from 'src/app/services/goods-http.service';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.scss']
+  styleUrls: ['./product-page.component.scss'],
 })
 export class ProductPageComponent implements OnInit {
-
   subcategory: {
-    id: string,
-    name: string
+    id: string;
+    name: string;
   };
 
   currentSubcategory: string;
@@ -33,29 +31,31 @@ export class ProductPageComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private categoriesHttpService: CategoriesHttpService,
     private goodsHttpService: GoodsHttpService,
     private cartHttpService: CartHttpService,
-    private store: Store) {
-    this.subscription = activatedRoute.params.subscribe(params => {
+    private store: Store
+  ) {
+    this.subscription = activatedRoute.params.subscribe((params) => {
       this.currentSubcategory = params.categoryName;
       this.productId = params.productId;
     });
   }
 
   ngOnInit(): void {
-    this.categoriesHttpService.getCategories().subscribe(categories => {
-      for(let i = 0; i < categories.length; i++) {
-        let curSubcategory = categories[i].subCategories.find(subcategory => subcategory.id === this.currentSubcategory);
-        if(curSubcategory) {
+    this.categoriesHttpService.getCategories().subscribe((categories) => {
+      for (let i = 0; i < categories.length; i + 1) {
+        const curSubcategory = categories[i].subCategories.find((subcategory) => subcategory.id === this.currentSubcategory);
+        if (curSubcategory) {
           this.subcategory = curSubcategory;
           this.category = categories[i];
           break;
         }
       }
     });
-    this.goodsHttpService.getProductById(this.productId).subscribe(product => {
+    this.goodsHttpService.getProductById(this.productId).subscribe((product) => {
       this.product = product;
       this.checkLSCart();
     });
@@ -67,9 +67,10 @@ export class ProductPageComponent implements OnInit {
   }
 
   addToBasket(product: Product) {
-    let currentUserToken = localStorage.getItem('token');
-    this.cartHttpService.addItemToCart(product.id, currentUserToken!).subscribe(() => {},
-      error => {
+    const currentUserToken = localStorage.getItem('token');
+    this.cartHttpService.addItemToCart(product.id, currentUserToken!).subscribe(
+      () => {},
+      () => {
         this.cartHttpService.addItemToLocalStorage(product.id);
       }
     );
@@ -77,12 +78,11 @@ export class ProductPageComponent implements OnInit {
   }
 
   checkLSCart() {
-    if(localStorage.getItem('cart')) {
-      let currentGoods: string[] = JSON.parse(localStorage.getItem('cart')!);
-      if(currentGoods.includes(this.product.id)) {
+    if (localStorage.getItem('cart')) {
+      const currentGoods: string[] = JSON.parse(localStorage.getItem('cart')!);
+      if (currentGoods.includes(this.product.id)) {
         this.product.isInCart = true;
       }
     }
   }
-
 }

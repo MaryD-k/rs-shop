@@ -6,9 +6,6 @@ import { PromoCarouselComponent } from './promo-carousel/promo-carousel.componen
 
 @NgModule({
   declarations: [MainPageComponent, PromoCarouselComponent],
-  imports: [
-    CommonModule,
-    MainPageRoutingModule
-  ]
+  imports: [CommonModule, MainPageRoutingModule],
 })
-export class MainPageModule { }
+export class MainPageModule {}

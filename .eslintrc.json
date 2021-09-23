@@ -42,18 +42,17 @@
             "requireLast": false
           }
         }],
-        "@typescript-eslint/explicit-function-return-type": ["error", {
-          "allowExpressions": true
-        }],
         "class-methods-use-this": "off",
-        "prefer-destructuring": ["error", { "array": false } ]
+        "prefer-destructuring": ["error", { "array": false } ],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "no-param-reassign": ["error", { "props": false }]
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {
-        "max-len": ["error", { "code": 140 }]
+        "max-len": ["error", { "code": 180 }]
       }
     },
     {

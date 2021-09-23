@@ -20,7 +20,9 @@
         </div>
       </ng-template>
       <ng-template #carouselSlide let-slide="slide" let-index="index">
-        <a class="carousel-slide" [href]="slide.link" [class.carousel-slide_hide]="options.hide === index" [class.carousel-slide_active]="options.active === index">
+        <a class="carousel-slide" [href]="slide.link" 
+          [class.carousel-slide_hide]="options.hide === index" 
+          [class.carousel-slide_active]="options.active === index">
           <img class="carousel-slide-image" [src]="slide.src">
         </a>
       </ng-template>

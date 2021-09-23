@@ -1,18 +1,16 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from 'src/app/models/user.model';
 
 export enum LocationActions {
-  GetLocation = "Get Location",
-  ChangeLocation = "Change Location",
+  GetLocation = 'Get Location',
+  ChangeLocation = 'Change Location',
   LocationGotSuccess = 'Location Got Success',
   LocationGotError = 'Location Got Error',
 }
 
-export const getLocation = createAction( LocationActions.GetLocation );
+export const getLocation = createAction(LocationActions.GetLocation);
 
-export const locationGotSuccess = createAction( LocationActions.LocationGotSuccess, 
-  props<{ location: string }>());
+export const locationGotSuccess = createAction(LocationActions.LocationGotSuccess, props<{ location: string }>());
 
-export const locationGotError = createAction( LocationActions.LocationGotError );
+export const locationGotError = createAction(LocationActions.LocationGotError);
 
-export const changeLocation = createAction (LocationActions.ChangeLocation, props<{ location: string}>())
+export const changeLocation = createAction(LocationActions.ChangeLocation, props<{ location: string }>());

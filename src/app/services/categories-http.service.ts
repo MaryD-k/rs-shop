@@ -6,7 +6,6 @@ import { Category } from '@core/models/category.model';
   providedIn: 'root',
 })
 export class CategoriesHttpService {
-
   constructor(private httpClient: HttpClient) {}
 
   returnEmptyResult(): [] {

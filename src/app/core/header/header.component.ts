@@ -8,9 +8,8 @@ import { getLocation } from 'src/app/redux/location/location.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   location: string;
-  
+
   isPopUpOpen: boolean;
 
   isComunDropDownOpen: boolean;
@@ -18,7 +17,9 @@ export class HeaderComponent implements OnInit {
   isCatalogOpen: boolean;
 
   constructor(private store: Store) {
-    this.store.subscribe((result: any) => this.location = result.locationState.location);
+    this.store.subscribe((result: any) => {
+      this.location = result.locationState.location;
+    });
   }
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleComunicationDropDwon() {
-    if(!this.isComunDropDownOpen) {
+    if (!this.isComunDropDownOpen) {
       this.isComunDropDownOpen = true;
     } else {
       this.isComunDropDownOpen = false;

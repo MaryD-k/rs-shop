@@ -5,10 +5,10 @@ import { ErrorPageComponent } from '@core/error-page/error-page.component';
 import { HeaderModule } from '@core/header/header.module';
 import { StoreModule } from '@ngrx/store';
 import { CategoriesHttpService } from 'src/app/services/categories-http.service';
+import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './core/footer/footer.component';
-import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './redux/user/user.effects';
 import { userReducer } from './redux/user/user.reducers';
 import { CheckAuthService } from './services/check-auth.service';
@@ -21,23 +21,24 @@ import { Interceptor } from './api.interceptor';
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent, FooterComponent],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
-    HeaderModule, 
+    BrowserModule,
+    AppRoutingModule,
+    HeaderModule,
     HttpClientModule,
-    StoreModule.forRoot({userState: userReducer, locationState: locationReducer}), 
-    EffectsModule.forRoot([UserEffects, LocationEffects])
+    StoreModule.forRoot({ userState: userReducer, locationState: locationReducer }),
+    EffectsModule.forRoot([UserEffects, LocationEffects]),
   ],
   providers: [
-    CategoriesHttpService, 
-    UserHttpService, 
-    CheckAuthService, 
+    CategoriesHttpService,
+    UserHttpService,
+    CheckAuthService,
     CartHttpService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi: true,
-    },],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

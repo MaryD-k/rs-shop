@@ -9,10 +9,14 @@ import { SortPipe } from './product/goods.pipe';
 import { ProductRatingDirective } from './product/product-rating.directive';
 
 @NgModule({
-  declarations: [CategoryPageComponent, ProductAvailabilityDirective, ProductRatingDirective, SortingBlockComponent, ProductComponent, SortPipe],
-  imports: [
-    CommonModule,
-    CategoryPageRoutingModule
-  ]
+  declarations: [
+    CategoryPageComponent,
+    ProductAvailabilityDirective,
+    ProductRatingDirective,
+    SortingBlockComponent,
+    ProductComponent,
+    SortPipe,
+  ],
+  imports: [CommonModule, CategoryPageRoutingModule],
 })
-export class CategoryPageModule { }
+export class CategoryPageModule {}

@@ -5,15 +5,14 @@ import { CategoriesHttpService } from 'src/app/services/categories-http.service'
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
-
   categories: Category[];
 
   selectedCategory: Category;
 
-  constructor(public categoriesHttpService: CategoriesHttpService) { }
+  constructor(public categoriesHttpService: CategoriesHttpService) {}
 
   ngOnInit(): void {
     this.categoriesHttpService.getCategories().subscribe((categories: Category[]) => {
@@ -25,5 +24,4 @@ export class CatalogComponent implements OnInit {
   setSelectedCategory(category: Category) {
     this.selectedCategory = category;
   }
-
 }

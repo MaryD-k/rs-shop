@@ -5,8 +5,6 @@ import { ProductPageRoutingModule } from './product-page-routing.module';
 
 @NgModule({
   declarations: [ProductPageComponent],
-  imports: [
-    CommonModule, ProductPageRoutingModule
-  ]
+  imports: [CommonModule, ProductPageRoutingModule],
 })
-export class ProductPageModule { }
+export class ProductPageModule {}

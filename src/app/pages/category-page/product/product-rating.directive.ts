@@ -1,10 +1,9 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[productRating]',
+  selector: '[appProductRating]',
 })
 export class ProductRatingDirective implements OnInit {
-  
   @Input() rating: number;
 
   constructor(private el: ElementRef) {}

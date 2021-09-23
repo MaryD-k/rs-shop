@@ -6,14 +6,13 @@ import { deleteUser, getUser } from '../redux/user/user.actions';
   providedIn: 'root',
 })
 export class CheckAuthService {
-
   constructor(private store: Store) {}
 
   checkAuthUser() {
-    if(localStorage.getItem('token')) {
-      let currentToken = localStorage.getItem('token');
-      if(currentToken) {
-        this.store.dispatch(getUser({token: currentToken}));
+    if (localStorage.getItem('token')) {
+      const currentToken = localStorage.getItem('token');
+      if (currentToken) {
+        this.store.dispatch(getUser({ token: currentToken }));
       }
     }
   }

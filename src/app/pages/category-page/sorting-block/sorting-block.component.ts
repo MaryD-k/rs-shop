@@ -4,15 +4,14 @@ import { GoodsSettingsService } from 'src/app/services/goods-sorting.service';
 @Component({
   selector: 'app-sorting-block',
   templateUrl: './sorting-block.component.html',
-  styleUrls: ['./sorting-block.component.scss']
+  styleUrls: ['./sorting-block.component.scss'],
 })
 export class SortingBlockComponent implements OnInit {
-
   sortType: string;
 
   isReverseSort: boolean;
 
-  constructor(private goodsSettingsService: GoodsSettingsService) { }
+  constructor(private goodsSettingsService: GoodsSettingsService) {}
 
   ngOnInit(): void {
     this.isReverseSort = false;
@@ -25,5 +24,4 @@ export class SortingBlockComponent implements OnInit {
     this.sortType = sortType;
     this.goodsSettingsService.setSort({ sortType: this.sortType, isReverse: this.isReverseSort });
   }
-
 }

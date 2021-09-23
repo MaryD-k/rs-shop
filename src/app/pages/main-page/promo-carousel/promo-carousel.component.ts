@@ -7,16 +7,15 @@ import { OPTIONS_DEFAULT, PromoCarouselOptions } from './promo-carousel.model';
   selector: 'app-promo-carousel',
   templateUrl: './promo-carousel.component.html',
   styleUrls: ['./promo-carousel.component.scss'],
-  providers: []
+  providers: [],
 })
 export class PromoCarouselComponent {
-
   options: PromoCarouselOptions;
 
   watch$!: Observable<number>;
 
   changeSlide$ = new Subject<number>();
- 
+
   constructor() {
     this.startconfig();
   }
@@ -25,7 +24,7 @@ export class PromoCarouselComponent {
     this.options = { ...OPTIONS_DEFAULT };
     this.watch$ = this.changeSlide$.pipe(
       startWith(0),
-      switchMap(index => {
+      switchMap((index) => {
         if (index >= 0) {
           this.options!.hide = this.options!.active;
           this.options!.active = index;
@@ -38,7 +37,7 @@ export class PromoCarouselComponent {
                 this.options!.active = 0;
               } else {
                 this.options!.hide = this.options!.active;
-                this.options!.active++;
+                this.options!.active += 1;
               }
             }
           })

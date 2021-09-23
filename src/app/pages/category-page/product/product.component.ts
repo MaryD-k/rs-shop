@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from '@core/models/category.model';
 import { Store } from '@ngrx/store';
@@ -8,24 +8,22 @@ import { getUser } from 'src/app/redux/user/user.actions';
 import { CartHttpService } from 'src/app/services/cart-http.service';
 import { GoodsHttpService } from 'src/app/services/goods-http.service';
 import { GoodsSettingsService } from 'src/app/services/goods-sorting.service';
-import { UserHttpService } from 'src/app/services/user-http.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit, OnChanges {
-
   @Input() category: Category;
 
   @Input() subcategory: {
-    id: string,
-    name: string
+    id: string;
+    name: string;
   };
 
   goods: Product[] = [];
-  
+
   @Input() page: number;
 
   @Input() isAddGoods: boolean;
@@ -37,8 +35,9 @@ export class ProductComponent implements OnInit, OnChanges {
     private goodsSettingsService: GoodsSettingsService,
     private goodsHttpService: GoodsHttpService,
     private cartHttpService: CartHttpService,
-    private store: Store) { 
-  }
+    private store: Store
+  ) {}
+
   ngOnChanges(): void {
     this.getGoods();
   }
@@ -51,82 +50,96 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   getGoods() {
-    if(this.subcategory) {
-      if(this.isAddGoods) {
-        this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id, 0, this.page * 10, this.sorting.sortType, this.sorting.isReverse)
-        .subscribe( goods => {
-          this.goods = goods;
-          this.goods.forEach(product => this.checkProduct(product));
-        });
-      } else if(this.page !== 1 ) {
-        this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id, (this.page - 1) * 10, 10, this.sorting.sortType, this.sorting.isReverse)
-        .subscribe( goods => {
-          this.goods = goods;
-          this.goods.forEach(product => this.checkProduct(product));
-        });
-      } else {
-        this.goodsHttpService.getGoodsForSubcategory(this.category.id, this.subcategory.id, 0, 10, this.sorting.sortType, this.sorting.isReverse)
-        .subscribe( goods => {
-          this.goods = goods;
-          this.goods.forEach(product => this.checkProduct(product));
-        });
-      }
-    } else if(this.isAddGoods) {
-      this.goodsHttpService.getGoodsForCategory(this.category.id, 0, this.page * 10, this.sorting.sortType, this.sorting.isReverse)
-        .subscribe( goods => {
-          this.goods = goods;
-          this.goods.forEach(product => this.checkProduct(product));
-        });
-      } else if(this.page !== 1 ) {
-        this.goodsHttpService.getGoodsForCategory(this.category.id, (this.page - 1) * 10, 10, this.sorting.sortType, this.sorting.isReverse)
-          .subscribe( goods => {
+    if (this.subcategory) {
+      if (this.isAddGoods) {
+        this.goodsHttpService
+          .getGoodsForSubcategory(this.category.id, this.subcategory.id, 0, this.page * 10, this.sorting.sortType, this.sorting.isReverse)
+          .subscribe((goods) => {
             this.goods = goods;
-            this.goods.forEach(product => this.checkProduct(product));
+            this.goods.forEach((product) => this.checkProduct(product));
+          });
+      } else if (this.page !== 1) {
+        this.goodsHttpService
+          .getGoodsForSubcategory(
+            this.category.id,
+            this.subcategory.id,
+            (this.page - 1) * 10,
+            10,
+            this.sorting.sortType,
+            this.sorting.isReverse
+          )
+          .subscribe((goods) => {
+            this.goods = goods;
+            this.goods.forEach((product) => this.checkProduct(product));
           });
       } else {
-        this.goodsHttpService.getGoodsForCategory(this.category.id, 0, 10, this.sorting.sortType, this.sorting.isReverse)
-        .subscribe( goods => {
-          this.goods = goods;
-          this.goods.forEach(product => this.checkProduct(product));
-        });
+        this.goodsHttpService
+          .getGoodsForSubcategory(this.category.id, this.subcategory.id, 0, 10, this.sorting.sortType, this.sorting.isReverse)
+          .subscribe((goods) => {
+            this.goods = goods;
+            this.goods.forEach((product) => this.checkProduct(product));
+          });
       }
+    } else if (this.isAddGoods) {
+      this.goodsHttpService
+        .getGoodsForCategory(this.category.id, 0, this.page * 10, this.sorting.sortType, this.sorting.isReverse)
+        .subscribe((goods) => {
+          this.goods = goods;
+          this.goods.forEach((product) => this.checkProduct(product));
+        });
+    } else if (this.page !== 1) {
+      this.goodsHttpService
+        .getGoodsForCategory(this.category.id, (this.page - 1) * 10, 10, this.sorting.sortType, this.sorting.isReverse)
+        .subscribe((goods) => {
+          this.goods = goods;
+          this.goods.forEach((product) => this.checkProduct(product));
+        });
+    } else {
+      this.goodsHttpService
+        .getGoodsForCategory(this.category.id, 0, 10, this.sorting.sortType, this.sorting.isReverse)
+        .subscribe((goods) => {
+          this.goods = goods;
+          this.goods.forEach((product) => this.checkProduct(product));
+        });
+    }
   }
 
   addToBasket(item: Product) {
-    let currentUserToken = localStorage.getItem('token');
-    this.cartHttpService.addItemToCart(item.id, currentUserToken!).subscribe(() => {},
-      error => {
+    const currentUserToken = localStorage.getItem('token');
+    this.cartHttpService.addItemToCart(item.id, currentUserToken!).subscribe(
+      () => {},
+      () => {
         this.cartHttpService.addItemToLocalStorage(item.id);
         this.getGoods();
       }
     );
-    if(currentUserToken) {
+    if (currentUserToken) {
       this.store.dispatch(getUser({ token: currentUserToken }));
     }
   }
 
   openProduct(id: string) {
-    if(!this.subcategory) {
-      this.goodsHttpService.getProductById(id).subscribe(product => {
-        this.router.navigate([`/${product.subCategory}/${product.id}`])
-      })
+    if (!this.subcategory) {
+      this.goodsHttpService.getProductById(id).subscribe((product) => {
+        this.router.navigate([`/${product.subCategory}/${product.id}`]);
+      });
     } else {
-      this.router.navigate([`/${this.subcategory.id}/${id}`])
+      this.router.navigate([`/${this.subcategory.id}/${id}`]);
     }
   }
 
   checkProduct(product: Product) {
     this.store.subscribe((state: any) => {
-      if(state.userState.user) {
-        if(state.userState.user.cart.find((productInCart: string) => productInCart === product.id)) {
+      if (state.userState.user) {
+        if (state.userState.user.cart.find((productInCart: string) => productInCart === product.id)) {
           product.isInCart = true;
         }
-      } else if(localStorage.getItem('cart')) {
-        let cartLS = JSON.parse(localStorage.getItem('cart')!);
-        if(cartLS.find((productId: string) => productId === product.id)) {
+      } else if (localStorage.getItem('cart')) {
+        const cartLS = JSON.parse(localStorage.getItem('cart')!);
+        if (cartLS.find((productId: string) => productId === product.id)) {
           product.isInCart = true;
         }
       }
-    })
+    });
   }
 }

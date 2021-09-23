@@ -6,7 +6,6 @@ import { Sorting } from '../models/goods-sorting.model';
   providedIn: 'root',
 })
 export class GoodsSettingsService {
-
   currentSort$: Observable<Sorting>;
 
   private currentSortSubject = new BehaviorSubject<Sorting>({ sortType: '', isReverse: false });

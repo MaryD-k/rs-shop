@@ -7,17 +7,16 @@ import { CategoriesHttpService } from 'src/app/services/categories-http.service'
 @Component({
   selector: 'app-category-page',
   templateUrl: './category-page.component.html',
-  styleUrls: ['./category-page.component.scss']
+  styleUrls: ['./category-page.component.scss'],
 })
 export class CategoryPageComponent implements OnInit {
-
   categoryName: string;
 
   category: Category;
 
   subcategory: {
-    id: string,
-    name: string
+    id: string;
+    name: string;
   };
 
   page: number;
@@ -25,21 +24,22 @@ export class CategoryPageComponent implements OnInit {
   isAddGoods: boolean;
 
   private subscription: Subscription;
-  constructor(private activateRoute: ActivatedRoute, 
-    private categoriesHttpService: CategoriesHttpService,
-    private router: Router) {
-      this.subscription = activateRoute.params.subscribe(params => this.categoryName = params['categoryName']);
+
+  constructor(private activateRoute: ActivatedRoute, private categoriesHttpService: CategoriesHttpService, private router: Router) {
+    this.subscription = activateRoute.params.subscribe((params) => {
+      this.categoryName = params.categoryName;
+    });
   }
 
   ngOnInit(): void {
-    this.categoriesHttpService.getCategories().subscribe(categories => {
+    this.categoriesHttpService.getCategories().subscribe((categories) => {
       let categoryCheck;
-      if(categories.find(category => category.id === this.categoryName)) {
-        this.category = categories.find(category => category.id === this.categoryName)!;
+      if (categories.find((category) => category.id === this.categoryName)) {
+        this.category = categories.find((category) => category.id === this.categoryName)!;
       } else {
-        for(let i = 0; i < categories.length; i++) {
-          categoryCheck = categories[i].subCategories.find(subcategory => subcategory.id == this.categoryName);
-          if(categoryCheck) {
+        for (let i = 0; i < categories.length; i + 1) {
+          categoryCheck = categories[i].subCategories.find((subcategory) => subcategory.id === this.categoryName);
+          if (categoryCheck) {
             this.category = categories[i];
             this.subcategory = categoryCheck;
             break;
@@ -55,10 +55,10 @@ export class CategoryPageComponent implements OnInit {
     this.isAddGoods = false;
     this.page += 1;
   }
-  
+
   prevPage() {
     this.isAddGoods = false;
-    if(this.page > 0) {
+    if (this.page > 0) {
       this.page -= 1;
     }
   }
@@ -67,5 +67,4 @@ export class CategoryPageComponent implements OnInit {
     this.page += 1;
     this.isAddGoods = true;
   }
-
 }

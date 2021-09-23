@@ -8,10 +8,9 @@ import { UserHttpService } from 'src/app/services/user-http.service';
 @Component({
   selector: 'app-account-block',
   templateUrl: './account-block.component.html',
-  styleUrls: ['./account-block.component.scss']
+  styleUrls: ['./account-block.component.scss'],
 })
 export class AccountBlockComponent implements OnInit {
-
   isAuthPopUpOpen: boolean;
 
   isAccountBlockOpen: boolean;
@@ -32,10 +31,12 @@ export class AccountBlockComponent implements OnInit {
 
   @Output() isClosePopUp = new EventEmitter<boolean>(false);
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private userHttpService: UserHttpService,
     private checkAuthService: CheckAuthService,
-    private store: Store) { }
+    private store: Store
+  ) {}
 
   ngOnInit(): void {
     this.isAuthPopUpOpen = false;
@@ -46,11 +47,11 @@ export class AccountBlockComponent implements OnInit {
     });
   }
 
-  toChosen() {
+  toChosen(): void {
     this.router.navigate(['/chosen']);
   }
 
-  openAuthPopUp() {
+  openAuthPopUp(): void {
     this.isAuthPopUpOpen = true;
     this.isAccountBlockOpen = false;
   }
@@ -62,10 +63,10 @@ export class AccountBlockComponent implements OnInit {
   loginUser() {
     this.userHttpService.loginUser(this.login, this.password).subscribe(
       (token: any) => {
-        let userToken = token.token; 
+        const userToken = token.token;
         this.checkAuthService.login(userToken);
       },
-      error => console.log(error) //вывести что такое пользователя нет
+      (error) => console.log(error) // вывести что такое пользователя нет
     );
     this.login = '';
     this.password = '';
@@ -81,10 +82,10 @@ export class AccountBlockComponent implements OnInit {
   registerUser() {
     this.userHttpService.registerUser(this.name, this.lastName, this.login, this.password).subscribe(
       (token: any) => {
-        let userToken = token.token; 
+        const userToken = token.token;
         this.checkAuthService.login(userToken);
       },
-      error => console.log(error) //вывести что такой пользователь есть
+      (error) => console.log(error) // вывести что такой пользователь есть
     );
     this.login = '';
     this.password = '';
@@ -104,5 +105,4 @@ export class AccountBlockComponent implements OnInit {
     this.isRegPopUpOpen = false;
     this.isClosePopUp.next(false);
   }
-
 }

@@ -12,26 +12,26 @@ export interface PromoCarouselOptions {
 
 const PROMO_GOODS: CarouselImage[] = [
   {
-    link: "/mobile",
-    src: "../../../../assets/apple.jpg"
+    link: '/mobile',
+    src: '../../../../assets/apple.jpg',
   },
   {
-    link: "/headphones",
-    src: "../../../../assets/garniture.jpg"
+    link: '/headphones',
+    src: '../../../../assets/garniture.jpg',
   },
   {
-    link: "/tvs",
-    src: "../../../../assets/tv.jpg"
+    link: '/tvs',
+    src: '../../../../assets/tv.jpg',
   },
   {
-    link: "/vacuum",
-    src: "../../../../assets/karcher.jpg"
-  }
+    link: '/vacuum',
+    src: '../../../../assets/karcher.jpg',
+  },
 ];
 
 export const OPTIONS_DEFAULT: PromoCarouselOptions = {
   slides: PROMO_GOODS,
   active: 3,
   hide: null,
-  interval: 4000
+  interval: 4000,
 };

@@ -7,7 +7,6 @@ import { SORT_TYPE } from '../constants/sorting-type.constants';
   name: 'sortGoods',
 })
 export class SortPipe implements PipeTransform {
-
   transform(value: Product[], sortType?: Sorting) {
     let sortedValue: Product[] = [...value];
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { changeLocation } from 'src/app/redux/location/location.actions';
 import { CITIES } from './location.constants';
@@ -9,7 +9,6 @@ import { CITIES } from './location.constants';
   styleUrls: ['./location-pop-up.component.scss'],
 })
 export class LocationPopUpComponent implements OnInit {
-
   cities = CITIES;
 
   selectedCity: string;
@@ -30,7 +29,7 @@ export class LocationPopUpComponent implements OnInit {
   }
 
   selectCity() {
-    this.store.dispatch(changeLocation({location: this.selectedCity}));
+    this.store.dispatch(changeLocation({ location: this.selectedCity }));
     this.closePopUp();
   }
 }
