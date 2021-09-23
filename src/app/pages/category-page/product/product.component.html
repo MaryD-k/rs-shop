@@ -1,8 +1,9 @@
 <div class="goods__page" *ngIf="goods.length > 0">
   <div class="product-container" *ngFor="let good of goods | sortGoods : sorting">
-    <a [routerLink]="[good.id]" class="product-link">
+    <a class="product-link" (click)="openProduct(good.id)">
       <div class="img-container">
-        <img class="product-img" [src]="good.imageUrls[0]">
+        <img *ngIf="good.imageUrls[0]" class="product-img" [src]="good.imageUrls[0]">
+        <img *ngIf="!good.imageUrls[0]" class="product-img" src="../../../../assets//default_preview.jpeg">
       </div>
       <p class="product-name">{{ good.name }}</p>
     </a>

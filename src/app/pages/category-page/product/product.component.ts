@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from '@core/models/category.model';
 import { Store } from '@ngrx/store';
 import { Sorting } from 'src/app/models/goods-sorting.model';
@@ -30,6 +31,7 @@ export class ProductComponent implements OnInit, OnChanges {
   sorting: Sorting;
 
   constructor(
+    private router: Router,
     private goodsSettingsService: GoodsSettingsService,
     private goodsHttpService: GoodsHttpService,
     private cartHttpService: CartHttpService, 
@@ -77,5 +79,16 @@ export class ProductComponent implements OnInit, OnChanges {
         this.cartHttpService.addItemToLocalStorage(itemId);
       }
     );
+  }
+
+  openProduct(id: string) {
+    if(!this.subcategory) {
+      this.goodsHttpService.getProductById(id).subscribe(product => {
+        console.log(product)
+        this.router.navigate([`/${product.subCategory}/${product.id}`])
+      })
+    } else {
+      this.router.navigate([`/${this.subcategory.id}/${id}`])
+    }
   }
 }

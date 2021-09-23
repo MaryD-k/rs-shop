@@ -7,10 +7,10 @@
               <a href="/" class="category-path__link" title="На главную">Главная</a>
             </li>
             <li class="category-path__item">
-              <a href="/category.id" class="category-path__link">{{ category.name }}</a>
+              <a href="{{'/'+category.id}}" class="category-path__link">{{ category.name }}</a>
             </li>
             <li class="category-path__item">
-              <a href="/subcategory.id" class="category-path__link">{{ subcategory.name }}</a>
+              <a href="{{'/'+subcategory.id}}" class="category-path__link">{{ subcategory.name }}</a>
             </li>
           </ul>
         </div>
