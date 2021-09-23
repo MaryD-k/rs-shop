@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "youtube-client": {
+    "rs-shop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/youtube-client",
+            "outputPath": "dist/rs-shop",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -42,7 +42,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "7kb"
                 }
               ],
               "fileReplacements": [
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "youtube-client:build:production"
+              "browserTarget": "rs-shop:build:production"
             },
             "development": {
-              "browserTarget": "youtube-client:build:development"
+              "browserTarget": "rs-shop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "youtube-client:build"
+            "browserTarget": "rs-shop:build"
           }
         },
         "test": {
@@ -107,11 +107,15 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "youtube-client",
+  "defaultProject": "rs-shop",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
