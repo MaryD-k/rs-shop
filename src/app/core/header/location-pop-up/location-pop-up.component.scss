@@ -1,0 +1,121 @@
+.pop-up__shadow {
+  background-color: rgba(13,13,13,.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
+
+.location-pop-up {
+  position: fixed;
+  width: 480px;
+  min-width: 480px;
+  height: 312px;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  margin-top: 96px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.close-pop-up {
+  width: 100%;
+  height: 40px;
+  padding-top: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+.close-pop-up-btn {
+  background-image: url(../../../../assets/close-img.svg);
+  float: right;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.location-pop-up__form {
+  margin: 0 auto;
+  width: 400px;
+}
+
+.location-form__title {
+  text-align: center;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.location-form__subtitle {
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 5px 8px 17px;
+}
+
+.location-form__input-block {
+  margin: 16px 0;
+}
+
+.location-form__label {
+  font-size: 13px;
+  line-height: 20px;
+  padding-bottom: 4px;
+  color: #b0b3b8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.location-form__input_wrapper {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.location-form__input {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px 12px;
+  border: 1px solid rgba(213,215,219,.6);
+  border-radius: 2px;
+  outline: none;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1a1a1a;
+  background: transparent;
+  padding-right: 35px;
+}
+
+.location-form__btn {
+  display: block;
+  width: 124px;
+  margin: 0 auto;
+  margin-top: 32px;
+  line-height: 20px;
+  height: 48px;
+  min-width: 40px;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  background-color: #07c;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+}

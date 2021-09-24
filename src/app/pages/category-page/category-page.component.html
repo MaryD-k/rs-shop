@@ -1,0 +1,45 @@
+<div *ngIf="category" class="category-page">
+    <div class="wrapper category-page__wrapper">
+      <ng-container *ngIf="subcategory">
+        <div class="category-path">
+          <ul class="category-path__list">
+            <li class="category-path__item item__first">
+              <a href="/" class="category-path__link" title="На главную">Главная</a>
+            </li>
+            <li class="category-path__item">
+              <a href="{{'/'+category.id}}" class="category-path__link">{{ category.name }}</a>
+            </li>
+            <li class="category-path__item">
+              <a href="{{'/'+subcategory.id}}" class="category-path__link">{{ subcategory.name }}</a>
+            </li>
+          </ul>
+        </div>
+        <h1 class="category-page__title">{{ subcategory.name }}</h1>
+      </ng-container>
+      <ng-container *ngIf="category && !subcategory">
+        <div class="category-path">
+          <ul class="category-path__list">
+            <li class="category-path__item item__first">
+              <a href="/" class="category-path__link" title="На главную">Главная</a>
+            </li>
+            <li class="category-path__item">
+              <a href="{{'/'+category.id}}" class="category-path__link">{{ category.name }}</a>
+            </li>
+          </ul>
+        </div>
+        <h1 class="category-page__title">{{ category.name }}</h1>
+      </ng-container>
+      <div class="goods-wrap">
+        <app-sorting-block></app-sorting-block>
+        <div class="top-paging">
+          <span class="paging-nav">
+            <a *ngIf="page > 1" rel="next" name="2" class="paging__link" (click)="prevPage()">&#60;</a>
+            Страница {{page}} 
+            <a rel="next" name="2" class="paging__link" (click)="nextPage()">></a>
+          </span>
+        </div>
+        <app-product [page]="page" [category]="category" [subcategory]="subcategory" [isAddGoods]="isAddGoods"></app-product>
+        <button class="load-goods__btn" (click)="addPage()">Загрузить ещё</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,46 @@
+<div class="basket-page">
+  <div class="wrapper basket-page__wrapper">
+    <h2 class="basket-page__title">Оформление заказа</h2>
+    <ng-container *ngIf="goodsToBuy.length === 0">
+      <p>Ваша корзина пуста</p>
+      <a class="to-main__link" href="/">← Вернуться к покупкам</a>
+    </ng-container>
+    <ng-container *ngIf="goodsToBuy.length > 0">
+      <h3 class="basket-page__subtitle">Список товаров</h3>
+      <div class="basket-goods__wrapper">
+        <div class="basket-goods__header">
+          <div class="basket-goods__column  prod-photo"></div>
+          <div class="basket-goods__column product">Товар</div>
+          <div class="basket-goods__column info">Дополнительные услуги</div>
+          <div class="basket-goods__column amount">Количество</div>
+          <div class="basket-goods__column delivery">Доставка</div>
+          <div class="basket-goods__column cost">Стоимость</div>
+        </div>
+        <div *ngFor="let product of goodsToBuy" class="basket-goods__row">
+          <div class="basket-goods__prod-column prod-photo">
+            <img class="basket-goods__prod-column" [src]="product.imageUrls[0]">
+          </div>
+          <div class="basket-goods__prod-column product">
+            <a class="product-name" href="{{'/'+product.subCategory+'/'+product.id}}">{{product.name}}</a>
+            <button class="delete-product_btn" (click)="deleteProduct(product.id)">Удалить</button>
+          </div>
+          <div class="basket-goods__prod-column info"></div>
+          <div class="basket-goods__prod-column amount">
+            <div class="goods-amount">
+              <span class="amount_minus"></span>
+              <div class="amount-control-block">
+                <input type="text" value="1" autocomplete="off" maxlength="6" data-multiple="1">
+              </div>
+              <span class="amount_plus"></span>
+            </div>
+          </div>
+          <div class="basket-goods__prod-column delivery">
+            <div>Курьером: 24 сентября</div>
+            <div>Самовывоз: 24 сентября</div>
+          </div>
+          <div class="basket-goods__prod-column cost">{{product.price}}<span>p.</span></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

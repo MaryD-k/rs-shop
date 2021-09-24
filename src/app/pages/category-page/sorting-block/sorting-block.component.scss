@@ -1,0 +1,32 @@
+.sorting-block {
+  padding-top: 18px;
+  line-height: 28px;
+}
+
+.sorting-list {
+  list-style: none;
+}
+
+.sorting__item {
+  float: left;
+  height: 28px;
+  padding: 0;
+  margin-right: -1px;
+  display: block;
+  padding: 0 15px;
+  color: #0072BC;
+  border-bottom: 1px dotted rgba(0, 114, 188, 0.5);
+  cursor: pointer;
+}
+
+.sorting__item_title {
+  float: left;
+  height: 28px;
+  padding: 0;
+  margin-right: -1px;
+}
+
+.sorting__item_selected {
+  color: #4D4D4D;
+  border: none;
+}
